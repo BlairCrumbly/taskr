@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const AddTaskForm = () => {
   const [task, setTask] = useState({
@@ -10,7 +10,7 @@ const AddTaskForm = () => {
     completed: false,
   });
   const navigate = useNavigate();
-
+  const {handleNewTask} = useOutletContext()
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTask((prevState) => ({
@@ -30,7 +30,8 @@ const AddTaskForm = () => {
       body: JSON.stringify(task),
     })
       .then((response) => response.json())
-      .then(() => {
+      .then((task) => {
+        handleNewTask(task)
         //! Navigate back to the task list page after the task is added
         navigate("/");
       })
