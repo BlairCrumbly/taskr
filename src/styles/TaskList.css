@@ -1,0 +1,41 @@
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+
+  .TaskList {
+    text-align: center;
+  }
+  .TaskList ul{
+    list-style-type: none;
+    
+  }
+  .TaskList li{
+    list-style-type: none;
+    background-color: rgb(217, 217, 217);
+    margin-bottom: 15px; 
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .search-bar-container {
+    
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20%; /* Space between search bar and task list */
+}
+
+/* Style for the search bar input */
+.search-bar {
+    width: 80%; /* Makes the search bar take up most of the space */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+

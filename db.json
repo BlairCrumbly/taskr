@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Complete React Project",
+      "dueDate": "2025-02-20",
+      "description": "Finish the front-end for the task management app.",
+      "estimatedTime": "3 hours",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "name": "Review DSA Concepts",
+      "dueDate": "2025-02-17",
+      "description": "Practice LeetCode problems on arrays and linked lists.",
+      "estimatedTime": "2 hours",
+      "completed": false
+    },
+    {
+      "id": "3",
+      "name": "Write Blog Post",
+      "dueDate": "2025-02-17",
+      "description": "Draft and publish a blog post on TypeScript basics.",
+      "estimatedTime": "3 hours",
+      "completed": false
+    },
+    {
+      "id": "7149",
+      "name": "Modal feature for project",
+      "description": "Adding modal for the task that holds due date, details, and estimated time.",
+      "dueDate": "2025-02-14",
+      "estimatedTime": "1",
+      "completed": false
+    },
+    {
+      "id": "5ad1",
+      "name": "Routing submit feature",
+      "description": "Add routing back to home after submit of the add task form",
+      "dueDate": "2025-02-11",
+      "estimatedTime": "0",
+      "completed": false
+    }
+  ]
+}

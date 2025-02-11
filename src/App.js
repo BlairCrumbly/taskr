@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import TaskList from "./components/TaskList";
+import AddTaskForm from "./components/AddTaskForm";
+import Statistics from "./components/Statistics";
+
+//! fetch here then pass data as prop
 
 function App() {
+
+  //? possibly change router approach, review lectures <Button as={Link} to="/">Home</Button>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router> 
+      <div className="App">
+      <header>Taskr</header>
+        <Navbar />
+        
+        <Routes>
+          
+          <Route path="/" element={<TaskList />} />  
+          {/* <Route path="/task/:id" element={<TaskDetail />} /> */}
+          <Route path="/tasks/new" element={<AddTaskForm />} />
+          <Route path="/statistics" element={<Statistics />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
