@@ -1,58 +1,83 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
-
+import TaskCard from "./TaskCard";
 const TaskList = () => {
-  const {tasks} = useOutletContext()
+
   const [searchQuery, setSearchQuery] = useState("");
+  const { tasks, handleTaskCompletion } = useOutletContext(); 
+  const [sortBy, setSortBy] = useState("date")
+
+
+const handleSortBy = (e) => {
+  
+  setSortBy(e.target.value)
+}
+
+
+
+ //! filter
+  const visibleTasks = tasks
+    .filter((tasks) => !tasks.completed) //hide completed tasks
+    .filter((tasks) => tasks.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   
-  //! SEARCH
- 
-  const filteredTasks = tasks.filter((task) =>
-    task.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+//?change
+const sortedTasks = useMemo(() => {
+  return [...visibleTasks].sort((a, b) => {
+    if (sortBy === "date"){
+      const dateComparison = new Date(a.dueDate) - new Date(b.dueDate);
+      if (dateComparison !== 0) return dateComparison;
 
-  const sortedTasks = filteredTasks.sort((a, b) => {
-    const dateComparison = new Date(a.dueDate) - new Date(b.dueDate);
-    if (dateComparison !== 0) {
-      return dateComparison;
+      const estimatedTimeA = parseInt(a.estimatedTime) || 0;
+      const estimatedTimeB = parseInt(b.estimatedTime) || 0;
+      return estimatedTimeB - estimatedTimeA;
+
     }
-    const estimatedTimeA = parseInt(a.estimatedTime) || 0;
-    const estimatedTimeB = parseInt(b.estimatedTime) || 0;
-    return estimatedTimeB - estimatedTimeA;
+    else if(sortBy === "Z-A"){
+      return b.name.toLowerCase().localeCompare(a.name.toLowerCase())
+    }
+    else{
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+    }
   });
-
-  //! sort filtered tasks by the closest match to the search query in alphabetical order
-  // const sortedFilteredTasks = filteredTasks.sort((a, b) => {
-  //   const query = searchQuery.toLowerCase();
-
-  //   //! check if the query is found in both task names
-  //   const indexA = a.name.toLowerCase().indexOf(query);
-  //   const indexB = b.name.toLowerCase().indexOf(query);
-
-  //   //!if both tasks contain the query, sort by the position of the query in the name
-  //   if (indexA !== -1 && indexB !== -1) {
-  //     return indexA - indexB;
-  //   }
-
-  //   //! if only one task contains the query, prioritize it
-  //   if (indexA !== -1) return -1;
-  //   if (indexB !== -1) return 1;
-
-  //   //! if neither task contains the query, fallback to alphabetical sorting
-  //   return a.name.localeCompare(b.name);
-  // });
-
+}, [visibleTasks, sortBy]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
+  //use setTasks to update the state and target prevTasks 
+// to avoid staleness
+//make var make it sort the current array of tasks 
+//using spread operator 
+//.sort((a, b) => )
+//use .localeCompare() ?
+
+
+
+
+
+
+
+
   return (
+    //! search
+    
     <div className="centered-container">
       <div className="TaskList">
-        
+      <div>
+
+
+      <select onChange={handleSortBy}>
+        <option value="date">Sort by Date</option>
+        <option value="A-Z">Sort by A-Z</option>
+        <option value="Z-A">Sort by Z-A</option>
+      </select>
+      </div>
+      
+
+      
         <div className="search-bar-container">
           <input
             type="text"
@@ -62,13 +87,17 @@ const TaskList = () => {
             onChange={handleSearchChange}
           />
         </div>
+        
+
+
+        {/* Tasks + hiding completed tasks */}
         <ul>
           {sortedTasks.map((task) => (
-            <li key={task.id}>
-              <strong>{task.name}</strong> - {task.dueDate}
-              <p>{task.description}</p>
-              <span>Estimated Time: {task.estimatedTime} hrs</span>
-            </li>
+            <TaskCard 
+            key={task.id}
+            task={task} 
+            handleTaskCompletion={handleTaskCompletion}
+             />
           ))}
         </ul>
       </div>

@@ -47,7 +47,7 @@ const AddTaskForm = () => {
         <input
           type="text"
           name="name"
-          value={task.name} 
+          value={task.name}
           onChange={handleChange} 
           required
         />

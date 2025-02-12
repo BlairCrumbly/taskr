@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { data, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -12,6 +13,8 @@ function App() {
         // !s ort the tasks by dueDate and estimatedTime when they are fetched
         const sortedTasks = data.sort((a, b) => {
           const dateComparison = new Date(a.dueDate) - new Date(b.dueDate);
+
+
           if (dateComparison !== 0) {
             return dateComparison;
           }
@@ -23,17 +26,35 @@ function App() {
       })
       .catch((error) => console.error("Error fetching tasks:", error));
   }, []);
-  //? possibly change router approach
+
+
+
+
+
   const handleNewTask = (task) => {
     setTasks(prevtasks => [...prevtasks , task])
   }
+
+const handleTaskCompletion = (tasksId) => {
+  setTasks((prevtasks) => 
+    prevtasks.map((tasks) =>
+    tasks.id === tasksId ? {...tasks, completed: !tasks.completed} : tasks
+))
+}
+
+
+
+
+
+
+
 
   return (
     
     <div className="App">
       <header>Taskr</header>
       <Navbar />
-      <Outlet context={{handleNewTask, tasks}}/> {/* renders the current routes component */}
+      <Outlet context={{handleNewTask, handleTaskCompletion, tasks}}/> {/* renders the current routes component */}
     </div>
     
   );
