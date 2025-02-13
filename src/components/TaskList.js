@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
@@ -7,6 +7,9 @@ const TaskList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { tasks, handleTaskCompletion } = useOutletContext(); 
   const [sortBy, setSortBy] = useState("date")
+  const [showCompleted, setShowCompleted] = useState(false)
+
+   
 
 
 const handleSortBy = (e) => {
@@ -18,7 +21,7 @@ const handleSortBy = (e) => {
 
  //! filter
   const visibleTasks = tasks
-    .filter((tasks) => !tasks.completed) //hide completed tasks
+    .filter((tasks) => showCompleted ? tasks.completed : !tasks.completed) //hide completed tasks
     .filter((tasks) => tasks.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
   
@@ -47,12 +50,12 @@ const sortedTasks = useMemo(() => {
     setSearchQuery(e.target.value);
   };
 
-  //use setTasks to update the state and target prevTasks 
-// to avoid staleness
-//make var make it sort the current array of tasks 
-//using spread operator 
-//.sort((a, b) => )
-//use .localeCompare() ?
+  const handleTodo = () => {
+    setShowCompleted(prevShowCompleted =>{
+      return !prevShowCompleted
+    })
+  }
+
 
 
 
@@ -74,7 +77,14 @@ const sortedTasks = useMemo(() => {
         <option value="A-Z">Sort by A-Z</option>
         <option value="Z-A">Sort by Z-A</option>
       </select>
+ {/* filter here */}
+      <select onChange={handleTodo}>
+        <option value={false}>Show to-do</option>
+        <option value={true}>Show completed</option>
+      </select>
       </div>
+
+
       
 
       
@@ -98,6 +108,7 @@ const sortedTasks = useMemo(() => {
             task={task} 
             handleTaskCompletion={handleTaskCompletion}
              />
+
           ))}
         </ul>
       </div>

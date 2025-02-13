@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { data, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
 
@@ -27,36 +27,48 @@ function App() {
       .catch((error) => console.error("Error fetching tasks:", error));
   }, []);
 
+//! get length info for pie chart
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter(task => task.completed).length;
 
 
-
-
+//! handles the a new task
   const handleNewTask = (task) => {
-    setTasks(prevtasks => [...prevtasks , task])
+    setTasks(prevtasks => [...prevtasks, task])
+  }
+//! patches when task is completed
+  const handleTaskCompletion = (taskId, completed) => {
+    fetch(`http://localhost:3001/tasks/${taskId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          completed: !completed
+        })
+      }
+    )
+    .then(response => response.json())
+    .then(() => {
+      setTasks((prevtasks) =>
+        prevtasks.map((task) =>
+          task.id === taskId ? { ...task, completed: !task.completed } : task
+        ))
+    })
+
+    
   }
 
-const handleTaskCompletion = (tasksId) => {
-  setTasks((prevtasks) => 
-    prevtasks.map((tasks) =>
-    tasks.id === tasksId ? {...tasks, completed: !tasks.completed} : tasks
-))
-}
-
-
-
-
-
-
-
-
   return (
-    
+
     <div className="App">
       <header>Taskr</header>
       <Navbar />
-      <Outlet context={{handleNewTask, handleTaskCompletion, tasks}}/> {/* renders the current routes component */}
+      
+      <Outlet context={{ handleNewTask, handleTaskCompletion, tasks, totalTasks, completedTasks }} /> {/* renders the current routes component */}
     </div>
-    
+
   );
 }
 

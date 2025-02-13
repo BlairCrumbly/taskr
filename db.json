@@ -22,7 +22,7 @@
       "dueDate": "2025-02-17",
       "description": "Draft and publish a blog post on TypeScript basics.",
       "estimatedTime": "3 hours",
-      "completed": false
+      "completed": true
     },
     {
       "id": "7149",
@@ -30,7 +30,7 @@
       "description": "Adding modal for the task that holds due date, details, and estimated time.",
       "dueDate": "2025-02-14",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "5ad1",
@@ -38,7 +38,7 @@
       "description": "Add routing back to home after submit of the add task form",
       "dueDate": "2025-02-11",
       "estimatedTime": "0",
-      "completed": false
+      "completed": true
     },
     {
       "id": "b910",
@@ -46,7 +46,7 @@
       "description": "meow meow meow meow meow meow meow meow meow meow",
       "dueDate": "2025-02-11",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "60cf",
@@ -54,7 +54,7 @@
       "description": "e",
       "dueDate": "2025-02-12",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "94d3",
@@ -70,7 +70,7 @@
       "description": "e",
       "dueDate": "2025-02-13",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "30d7",

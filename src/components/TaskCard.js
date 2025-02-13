@@ -31,12 +31,14 @@ const TaskCard = ({task, handleTaskCompletion, }) => {
         <div className= {`taskcard ${priorityClass}`}>
             <div className={`priority-strip`}></div>
             <li key={task.id}>
+        <div className='checkbox'>
         <input
         type="checkbox"
         checked={task.completed}
-        onChange={() => handleTaskCompletion(task.id)}
+        onChange={() => handleTaskCompletion(task.id, task.completed)}
         />
 
+        </div>
 
         <strong>{task.name}</strong> - {task.dueDate}
         <p>{task.description}</p>
