@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    /* height: 100vh;  */
   }
   
 
@@ -16,7 +16,7 @@
   }
   .TaskList li{
     list-style-type: none;
-    background-color: rgb(217, 217, 217);
+
     margin-bottom: 15px; 
     border-radius: 5px;
     padding: 5px;
@@ -31,11 +31,46 @@
 
 /* Style for the search bar input */
 .search-bar {
-    width: 80%; /* Makes the search bar take up most of the space */
+    width: 100%;
     padding: 8px;
+    
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     
 }
 
+.taskcard {
+  list-style-type: none;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.priority-strip {
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0px;
+}
+
+.red .priority-strip {
+  background-color: rgb(255, 76, 76);
+}
+.yellow .priority-strip {
+  background-color: rgb(255, 206, 61);
+}
+.green .priority-strip {
+  background-color: rgb(45, 214, 82);
+}
+.overdue .priority-strip {
+  background-color: rgb(200, 0, 0);
+}
