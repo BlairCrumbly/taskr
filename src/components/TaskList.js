@@ -53,8 +53,6 @@ const handleColorFilterChange = (e) => {
   setFilterInput(e.target.value)
 }
 
-
-
  //! filters
 
  const visibleTasks = tasks

@@ -14,7 +14,7 @@
       "dueDate": "2025-02-17",
       "description": "Practice LeetCode problems on arrays and linked lists.",
       "estimatedTime": "2 hours",
-      "completed": false
+      "completed": true
     },
     {
       "id": "3",
@@ -38,7 +38,7 @@
       "description": "Add routing back to home after submit of the add task form",
       "dueDate": "2025-02-11",
       "estimatedTime": "0",
-      "completed": true
+      "completed": false
     },
     {
       "id": "b910",
@@ -78,7 +78,7 @@
       "description": "yeller",
       "dueDate": "2025-02-26",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "f2ba",
@@ -159,6 +159,14 @@
       "dueDate": "2025-03-07",
       "estimatedTime": "1",
       "completed": false
+    },
+    {
+      "id": "1661",
+      "name": "Present",
+      "description": "talk about stuff",
+      "dueDate": "2025-02-14",
+      "estimatedTime": "1",
+      "completed": true
     }
   ]
 }
