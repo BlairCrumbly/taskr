@@ -2,27 +2,63 @@ import { useState, useMemo } from "react";
 import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
+
 const TaskList = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const { tasks, handleTaskCompletion } = useOutletContext(); 
   const [sortBy, setSortBy] = useState("date")
   const [showCompleted, setShowCompleted] = useState(false)
+  const [filterInput, setFilterInput] = useState("none")
 
-   
+    const colorPriority = (task) =>{
+    const today = new Date();
+    const dueDate = new Date(task.dueDate)
+    const redZone = 7;
+    const yellowZone = 14;
 
+    if(dueDate < today && dueDate.getDay() !== today.getDay()){
+        return 'overdue'
+    }
+    const differenceInDays = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
+    
+    if(differenceInDays < redZone){
+        return 'red'
+    }else if (differenceInDays < yellowZone  && differenceInDays >= redZone){
+        return 'yellow'
+    } else{
+        return 'green'
+    } 
+}
 
-const handleSortBy = (e) => {
+const handleSortByChange = (e) => {
   
   setSortBy(e.target.value)
 }
 
+const handleSearchChange = (e) => {
+  setSearchQuery(e.target.value);
+};
+
+const handleTodoChange = () => {
+  setShowCompleted(prevShowCompleted =>{
+    return !prevShowCompleted
+  })
+}
+
+const handleColorFilterChange = (e) => {
+  setFilterInput(e.target.value)
+}
 
 
- //! filter
-  const visibleTasks = tasks
-    .filter((tasks) => showCompleted ? tasks.completed : !tasks.completed) //hide completed tasks
-    .filter((tasks) => tasks.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+ //! filters
+
+ const visibleTasks = tasks
+ .filter((task) => (showCompleted ? task.completed : !task.completed))
+ .filter((task) => task.name.toLowerCase().includes(searchQuery.toLowerCase()))
+ .filter((task) => filterInput === "none" || colorPriority(task) === filterInput);
+
 
   
 //?change
@@ -46,39 +82,29 @@ const sortedTasks = useMemo(() => {
   });
 }, [visibleTasks, sortBy]);
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleTodo = () => {
-    setShowCompleted(prevShowCompleted =>{
-      return !prevShowCompleted
-    })
-  }
-
-
-
-
-
-
-
-
-
   return (
-    //! search
+    
     
     <div className="centered-container">
       <div className="TaskList">
       <div>
 
 
-      <select onChange={handleSortBy}>
+      <select onChange={handleSortByChange}>
         <option value="date">Sort by Date</option>
         <option value="A-Z">Sort by A-Z</option>
         <option value="Z-A">Sort by Z-A</option>
       </select>
- {/* filter here */}
-      <select onChange={handleTodo}>
+
+      <select onChange={handleColorFilterChange}>
+        <option value="none">none</option>
+        <option value="overdue">Overdue</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+      </select>
+ 
+      <select onChange={handleTodoChange}>
         <option value={false}>Show to-do</option>
         <option value={true}>Show completed</option>
       </select>
@@ -107,6 +133,7 @@ const sortedTasks = useMemo(() => {
             key={task.id}
             task={task} 
             handleTaskCompletion={handleTaskCompletion}
+            priorityClass={colorPriority(task)}
              />
 
           ))}
