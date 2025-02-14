@@ -14,7 +14,7 @@
       "dueDate": "2025-02-17",
       "description": "Practice LeetCode problems on arrays and linked lists.",
       "estimatedTime": "2 hours",
-      "completed": false
+      "completed": true
     },
     {
       "id": "3",
@@ -22,7 +22,7 @@
       "dueDate": "2025-02-17",
       "description": "Draft and publish a blog post on TypeScript basics.",
       "estimatedTime": "3 hours",
-      "completed": true
+      "completed": false
     },
     {
       "id": "7149",
@@ -38,7 +38,7 @@
       "description": "Add routing back to home after submit of the add task form",
       "dueDate": "2025-02-11",
       "estimatedTime": "0",
-      "completed": true
+      "completed": false
     },
     {
       "id": "b910",
@@ -46,7 +46,7 @@
       "description": "meow meow meow meow meow meow meow meow meow meow",
       "dueDate": "2025-02-11",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "60cf",
@@ -78,7 +78,7 @@
       "description": "yeller",
       "dueDate": "2025-02-26",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "f2ba",
@@ -86,7 +86,7 @@
       "description": "e",
       "dueDate": "2025-02-20",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "514e",
@@ -102,7 +102,7 @@
       "description": "e",
       "dueDate": "2025-02-28",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "862d",
@@ -118,7 +118,7 @@
       "description": "e",
       "dueDate": "2025-02-22",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5e14",
@@ -134,7 +134,7 @@
       "description": "Ah!",
       "dueDate": "2025-02-13",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     }
   ]
 }

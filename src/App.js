@@ -64,9 +64,10 @@ function App() {
 
     <div className="App">
       <header>Taskr</header>
-      <Navbar />
-      
-      <Outlet context={{ handleNewTask, handleTaskCompletion, tasks, totalTasks, completedTasks }} /> {/* renders the current routes component */}
+      <Navbar totalTasks={totalTasks} completedTasks={completedTasks} />
+      <Outlet
+        context={{ handleNewTask, handleTaskCompletion, tasks, totalTasks, completedTasks }}
+      />
     </div>
 
   );

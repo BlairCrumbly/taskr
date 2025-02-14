@@ -45,6 +45,8 @@
   position: relative;
   overflow: hidden;
   background-color:  white;
+  width: 500px; /* Set fixed width */
+  
   
 }
 .TaskList ul li p{
