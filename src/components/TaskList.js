@@ -3,10 +3,9 @@ import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
 import Switch from '@mui/material/Switch';
-import FormGroup from '@mui/material/FormGroup';
+
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+
 const TaskList = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,7 +13,6 @@ const TaskList = () => {
   const [sortBy, setSortBy] = useState("date")
   const [showCompleted, setShowCompleted] = useState(false)
   const [filterInput, setFilterInput] = useState("none")
-    const [checked, setChecked] = useState(false);
 
 
     const colorPriority = (task) =>{
@@ -66,7 +64,7 @@ const handleColorFilterChange = (e) => {
 
 
   
-//?change
+
 const sortedTasks = useMemo(() => {
   return [...visibleTasks].sort((a, b) => {
     if (sortBy === "date"){
@@ -86,7 +84,9 @@ const sortedTasks = useMemo(() => {
     }
   });
 }, [visibleTasks, sortBy]);
-  return (
+  
+
+return (
     
     
     <div className="centered-container">
@@ -115,15 +115,9 @@ const sortedTasks = useMemo(() => {
         labelPlacement="end"
         className="switch-label"
       />
-
-
-
       </div>
 
 
-      
-
-      
         <div className="search-bar-container">
           <input
             type="text"

@@ -61,14 +61,14 @@ const TaskCategoryBarChart = ({ tasks }) => {
       <Typography variant="h4" align="center"gutterBottom>
         Task Category Overview
       </Typography>
-      <ResponsiveContainer width="80%" height={300} style={{ marginLeft: '15%' }}>
+      <ResponsiveContainer width="70%" height={300} style={{ marginLeft: '15%' }}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="category" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="count" fill="#4caf50" />
+          <Bar dataKey="count" fill="purple" />
         </BarChart>
       </ResponsiveContainer>
     </Paper>
