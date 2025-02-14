@@ -30,7 +30,7 @@
       "description": "Adding modal for the task that holds due date, details, and estimated time.",
       "dueDate": "2025-02-14",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "5ad1",
@@ -46,7 +46,7 @@
       "description": "meow meow meow meow meow meow meow meow meow meow",
       "dueDate": "2025-02-11",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "60cf",
