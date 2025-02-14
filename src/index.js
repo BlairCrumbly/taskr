@@ -13,9 +13,9 @@ const router = createBrowserRouter([
     element: <App />,  //! parent component and always rendered
     //! all will render inside app
     children: [
-      { index: true, element: <TaskList /> },          
+      { index: true, element: <TaskList /> },
       { path: "/tasks/new", element: <AddTaskForm /> },
-      { path: "/statistics", element: <Statistics /> }, 
+      { path: "/statistics", element: <Statistics /> },
     ],
   },
 ]);

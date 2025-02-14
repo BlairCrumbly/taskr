@@ -2,7 +2,11 @@ import { useState, useMemo } from "react";
 import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
-
+import Switch from '@mui/material/Switch';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 const TaskList = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,6 +14,8 @@ const TaskList = () => {
   const [sortBy, setSortBy] = useState("date")
   const [showCompleted, setShowCompleted] = useState(false)
   const [filterInput, setFilterInput] = useState("none")
+    const [checked, setChecked] = useState(false);
+
 
     const colorPriority = (task) =>{
     const today = new Date();
@@ -31,6 +37,7 @@ const TaskList = () => {
     } 
 }
 
+
 const handleSortByChange = (e) => {
   
   setSortBy(e.target.value)
@@ -41,10 +48,8 @@ const handleSearchChange = (e) => {
 };
 
 const handleTodoChange = () => {
-  setShowCompleted(prevShowCompleted =>{
-    return !prevShowCompleted
-  })
-}
+  setShowCompleted(prevState => !prevState);
+};
 
 const handleColorFilterChange = (e) => {
   setFilterInput(e.target.value)
@@ -81,12 +86,12 @@ const sortedTasks = useMemo(() => {
     }
   });
 }, [visibleTasks, sortBy]);
-
   return (
     
     
     <div className="centered-container">
       <div className="TaskList">
+      
       <div className="DropDowns">
 
 
@@ -103,11 +108,16 @@ const sortedTasks = useMemo(() => {
         <option value="yellow">Yellow</option>
         <option value="green">Green</option>
       </select>
- 
-      <select className onChange={handleTodoChange}>
-        <option value={false}>Show to-do</option>
-        <option value={true}>Show completed</option>
-      </select>
+
+      <FormControlLabel
+        control={<Switch color="secondary" checked={showCompleted} onChange={handleTodoChange} />}
+        label="Show completed tasks"
+        labelPlacement="end"
+        className="switch-label"
+      />
+
+
+
       </div>
 
 

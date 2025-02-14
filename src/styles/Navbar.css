@@ -113,7 +113,7 @@ nav div {
 
 .taskr-heading {
   display: flex;
-  align-items: center; /* Ensures both text and icon are aligned */
+  align-items: center; 
   margin-left: 20px;
   color: white;
   font-size: 50px;
@@ -122,8 +122,8 @@ nav div {
 }
 
 .material-symbols-outlined {
-  font-size: 50px; /* Match the font size of Taskr */
-  line-height: 1; /* Ensures vertical alignment */
+  font-size: 50px;
+  line-height: 1; 
 }
 
 .progress-circle-container {
@@ -131,6 +131,6 @@ nav div {
   padding: 10px;
   width: 100%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   margin-left: -46px;
 }

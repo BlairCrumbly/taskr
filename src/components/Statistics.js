@@ -1,14 +1,16 @@
-//make and pass total tasks and total completed tasks
-//calc remaining tasks
-//data for pie chart + percentages
-import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
-import { useOutletContext } from 'react-router-dom';
-import '../styles/Stats.css';
+import React from 'react';
+import { useOutletContext } from "react-router-dom";
+import TaskCategoryBarChart from './TaskCategoryBarChart';
 
-let Statistics = () =>{
-}
+const Statistics = () => {
+  // Get tasks and colorPriority from the context
+  const { tasks } = useOutletContext();
 
+  return (
+    <div className="statistics-container">
+      <TaskCategoryBarChart tasks={tasks}  />
+    </div>
+  );
+};
 
-
-
-export default Statistics
+export default Statistics;

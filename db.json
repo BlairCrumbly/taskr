@@ -14,7 +14,7 @@
       "dueDate": "2025-02-17",
       "description": "Practice LeetCode problems on arrays and linked lists.",
       "estimatedTime": "2 hours",
-      "completed": true
+      "completed": false
     },
     {
       "id": "3",
@@ -30,7 +30,7 @@
       "description": "Adding modal for the task that holds due date, details, and estimated time.",
       "dueDate": "2025-02-14",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5ad1",
@@ -38,7 +38,7 @@
       "description": "Add routing back to home after submit of the add task form",
       "dueDate": "2025-02-11",
       "estimatedTime": "0",
-      "completed": false
+      "completed": true
     },
     {
       "id": "b910",
@@ -78,7 +78,7 @@
       "description": "yeller",
       "dueDate": "2025-02-26",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "f2ba",
@@ -118,7 +118,7 @@
       "description": "e",
       "dueDate": "2025-02-22",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "5e14",
@@ -135,6 +135,30 @@
       "dueDate": "2025-02-13",
       "estimatedTime": "1",
       "completed": true
+    },
+    {
+      "id": "3d9f",
+      "name": "eeee",
+      "description": "e",
+      "dueDate": "2025-02-14",
+      "estimatedTime": "1",
+      "completed": true
+    },
+    {
+      "id": "aca3",
+      "name": "e",
+      "description": "e",
+      "dueDate": "2025-02-15",
+      "estimatedTime": "1",
+      "completed": true
+    },
+    {
+      "id": "0c43",
+      "name": "new task",
+      "description": "new task",
+      "dueDate": "2025-03-07",
+      "estimatedTime": "1",
+      "completed": false
     }
   ]
 }
