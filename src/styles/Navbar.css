@@ -10,7 +10,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: rgb(28, 137, 79);
 }
 
 
@@ -27,17 +27,17 @@ nav div {
   text-decoration: none;
   margin-bottom: 100px; 
   font-size: 20px;
-  background-color: #009747;;
+  background-color: #ffffff;;
   padding: 10px;
   border-radius: 5px;
-  color: white;
-  font-weight: 200;
+  color: rgb(26, 26, 26);
+  font-weight: 300px;
   
 }
 
 .nav-link:hover {
   font-weight: 600;
-  background-color: #00853e;
+  background-color: #e7e7e7;
 }
 
 /*! ADD FORM CONTAINER  */
@@ -108,4 +108,19 @@ nav div {
 
 .add-task-form button:hover {
   background-color: #00853e;
+}
+
+.taskr-heading {
+  display: flex;
+  align-items: center; /* Ensures both text and icon are aligned */
+  margin-left: 20px;
+  color: white;
+  font-size: 50px;
+  margin-bottom: -100px;
+  gap: 15px;
+}
+
+.material-symbols-outlined {
+  font-size: 50px; /* Match the font size of Taskr */
+  line-height: 1; /* Ensures vertical alignment */
 }

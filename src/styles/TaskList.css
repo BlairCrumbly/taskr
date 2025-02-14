@@ -77,3 +77,18 @@
   font-weight: bold;
 }
 
+.DropDowns select{
+  color: rgb(255, 255, 255);
+  background-color: #009747;
+  padding: 10px;
+  border-radius: 12px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-style: none;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.DropDowns select:hover{
+  background-color: #18b05f;
+}

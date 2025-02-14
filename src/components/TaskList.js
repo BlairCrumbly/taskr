@@ -87,7 +87,7 @@ const sortedTasks = useMemo(() => {
     
     <div className="centered-container">
       <div className="TaskList">
-      <div>
+      <div className="DropDowns">
 
 
       <select onChange={handleSortByChange}>
@@ -104,7 +104,7 @@ const sortedTasks = useMemo(() => {
         <option value="green">Green</option>
       </select>
  
-      <select onChange={handleTodoChange}>
+      <select className onChange={handleTodoChange}>
         <option value={false}>Show to-do</option>
         <option value={true}>Show completed</option>
       </select>
