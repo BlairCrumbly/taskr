@@ -17,14 +17,6 @@
       "completed": true
     },
     {
-      "id": "3",
-      "name": "Write Blog Post",
-      "dueDate": "2025-02-17",
-      "description": "Draft and publish a blog post on TypeScript basics.",
-      "estimatedTime": "3 hours",
-      "completed": true
-    },
-    {
       "id": "7149",
       "name": "Modal feature for project",
       "description": "Adding modal for the task that holds due date, details, and estimated time.",
@@ -46,14 +38,6 @@
       "description": "meow meow meow meow meow meow meow meow meow meow",
       "dueDate": "2025-02-11",
       "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "60cf",
-      "name": "e",
-      "description": "e",
-      "dueDate": "2025-02-12",
-      "estimatedTime": "1",
       "completed": false
     },
     {
@@ -62,23 +46,15 @@
       "description": "e",
       "dueDate": "2025-04-23",
       "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "8799",
-      "name": "today",
-      "description": "e",
-      "dueDate": "2025-02-13",
-      "estimatedTime": "1",
       "completed": false
     },
     {
       "id": "30d7",
-      "name": "yellow ",
+      "name": "yellow",
       "description": "yeller",
       "dueDate": "2025-02-26",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "f2ba",
@@ -86,39 +62,7 @@
       "description": "e",
       "dueDate": "2025-02-20",
       "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "514e",
-      "name": "test test",
-      "description": "w",
-      "dueDate": "2025-02-21",
-      "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "99c8",
-      "name": "15th day",
-      "description": "e",
-      "dueDate": "2025-02-28",
-      "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "862d",
-      "name": "16th day",
-      "description": "16",
-      "dueDate": "2025-03-01",
-      "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "e55c",
-      "name": "test",
-      "description": "e",
-      "dueDate": "2025-02-22",
-      "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5e14",
@@ -134,23 +78,7 @@
       "description": "Ah!",
       "dueDate": "2025-02-13",
       "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "3d9f",
-      "name": "eeee",
-      "description": "e",
-      "dueDate": "2025-02-14",
-      "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "aca3",
-      "name": "e",
-      "description": "e",
-      "dueDate": "2025-02-15",
-      "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "0c43",
@@ -165,14 +93,6 @@
       "name": "Present",
       "description": "talk about stuff",
       "dueDate": "2025-02-14",
-      "estimatedTime": "1",
-      "completed": true
-    },
-    {
-      "id": "f247",
-      "name": "hi mom",
-      "description": "hiiiiiiii",
-      "dueDate": "2025-02-19",
       "estimatedTime": "1",
       "completed": true
     }

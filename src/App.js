@@ -66,7 +66,7 @@ const handleTaskCompletion = (taskId, completed) => {
           )
         );
       });
-  }, 500); // Delay animation before updating state
+  }, 500); // delay animation before updating state
 };
 
 

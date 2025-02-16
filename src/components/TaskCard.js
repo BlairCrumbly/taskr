@@ -20,11 +20,10 @@ const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
   <div className="priority-strip"></div>
 
   <div className="task-header">
-    {/* Apply strike-through when the task transitions from uncompleted to completed */}
-    <strong className={task.addingLineThrough ? "crossed-out" : ""}>
-      {task.name}
-    </strong>
-    - {task.dueDate}
+  {/* Apply strike-through when the task transitions from uncompleted to completed */}
+  <strong className={task.addingLineThrough ? "crossed-out" : ""} style={{ marginRight: '10px' }}>
+    {task.name}
+  </strong>- {task.dueDate}
 
     <input
       type="checkbox"

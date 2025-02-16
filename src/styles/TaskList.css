@@ -59,7 +59,8 @@
 /* Cross out effect when completed */
 .crossed-out {
   text-decoration: line-through;
-  color: gray;
+  text-decoration-thickness: 2px;
+  color: rgb(55, 151, 45);
   transition: text-decoration 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -93,9 +94,17 @@
   margin-left: 15px;
 }
 
+.task-checkbox:hover{
+  background-color: #3ebd77; 
+}
+
 .task-checkbox:checked {
-  background-color: #041f10; /* Green fill when checked */
-  border: 2px solid #020a06; /* Darker green border */
+  background-color: #3ebd77; /* Green fill when checked */
+  border: 0.5px solid #020a06; /* Darker green border */
+}
+.task-checkbox:checked:hover{
+  background-color: #f36565; /* Green fill when checked */
+  border: 0.5px solid #000000; /* Darker green border */
 }
 
 /* Task details styling */
