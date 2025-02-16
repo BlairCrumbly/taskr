@@ -34,6 +34,10 @@
     
 }
 
+/* Base taskcard styling */
+/* General task card styling */
+/* Default taskcard styling */
+/* Default taskcard styling */
 .taskcard {
   list-style-type: none;
   margin-bottom: 15px;
@@ -44,12 +48,57 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  background-color:  white;
-  width: 500px; 
-  
-  
+  background-color: white;
+  width: 500px;
+  opacity: 1;
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Ensure transition is here */
 }
 
+
+/* Fade-out effect */
+/* Cross out effect when completed */
+.crossed-out {
+  text-decoration: line-through;
+  color: gray;
+  transition: text-decoration 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Fade out animation when task is checked */
+.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Fade back in when task is unchecked */
+.fade-in {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+
+
+
+
+/* Checkbox style */
+.task-checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 0.5px solid #000000;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-left: 15px;
+}
+
+.task-checkbox:checked {
+  background-color: #041f10; /* Green fill when checked */
+  border: 2px solid #020a06; /* Darker green border */
+}
+
+/* Task details styling */
 .task-details {
   max-height: 0;
   opacity: 0;
@@ -61,6 +110,18 @@
   max-height: 200px; /* Adjust based on expected content height */
   opacity: 1;
 }
+
+
+
+
+/* Cross out effect when task is completed */
+/* Cross out effect when task is completed */
+/* Fade-out effect when unchecking */
+
+
+
+
+
 
 .TaskList ul li p{
   width: 80%;

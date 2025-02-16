@@ -37,28 +37,49 @@ function App() {
     setTasks(prevtasks => [...prevtasks, task])
   }
 //! patches when task is completed
-  const handleTaskCompletion = (taskId, completed) => {
-    fetch(`http://localhost:3001/tasks/${taskId}`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          completed: !completed
-        })
-      }
+const handleTaskCompletion = (taskId, completed) => {
+  setTasks((prevTasks) =>
+    prevTasks.map((task) =>
+      task.id === taskId
+        ? { ...task, fadingOut: true, addingLineThrough: !completed }
+        : task
     )
-    .then(response => response.json())
-    .then(() => {
-      setTasks((prevtasks) =>
-        prevtasks.map((task) =>
-          task.id === taskId ? { ...task, completed: !task.completed } : task
-        ))
-    })
+  );
 
-    
-  }
+  setTimeout(() => {
+    fetch(`http://localhost:3001/tasks/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        completed: !completed,
+      }),
+    })
+      .then((response) => response.json())
+      .then(() => {
+        setTasks((prevTasks) =>
+          prevTasks.map((task) =>
+            task.id === taskId
+              ? { ...task, completed: !task.completed, fadingOut: false, addingLineThrough: false }
+              : task
+          )
+        );
+      });
+  }, 500); // Delay animation before updating state
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
 
