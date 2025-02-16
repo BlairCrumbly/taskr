@@ -29,10 +29,10 @@ const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
             {isOpen ? <IoIosArrowUp />: <IoIosArrowDown/>}
         </div>
         
-        {isOpen && <div className="task-details"  >
+        <div className={`task-details ${isOpen ? "open" : "closed"}`}>
             <p>{task.description}</p>
             <span>Estimated Time: {task.estimatedTime} hrs</span>
-          </div>}
+        </div>
     
       </li>
     );
