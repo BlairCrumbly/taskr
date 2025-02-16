@@ -1,6 +1,6 @@
 import '../styles/TaskList.css';
 import { useState } from 'react';
-// IoIosArrowDropupCircle
+
 import { IoIosArrowUp,  IoIosArrowDown} from "react-icons/io";
 
 const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
@@ -9,14 +9,19 @@ const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
     const toggleDetails = () =>{
         setIsOpen(previsOpen => !previsOpen)
     }
-  // Only apply strike-through when transitioning from uncompleted to completed
+  //todo only apply strike-through when transitioning from uncompleted to completed
 
 
   return (
 <li
-  className={`taskcard ${priorityClass} ${task.fadingOut ? "fade-out" : "fade-in"}`} // Apply fade effect
+  className={`taskcard ${priorityClass} ${task.fadingOut ? "fade-out" : "fade-in"}`} //* apply fade effect
   key={task.id}
->
+>     
+    <div onClick={toggleDetails} className='arrows'>
+        {isOpen ? <IoIosArrowUp size={22} /> : <IoIosArrowDown size={22}/>}
+    </div>
+  
+  
   <div className="priority-strip"></div>
 
   <div className="task-header">
@@ -33,9 +38,7 @@ const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
     />
   </div>
 
-  <div onClick={toggleDetails}>
-    {isOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-  </div>
+
 
   <div className={`task-details ${isOpen ? "open" : "closed"}`}>
     <p>{task.description}</p>

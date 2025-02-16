@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh;  */
+
   }
   
 
@@ -20,10 +20,10 @@
     
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10%; /* Space between search bar and task list */
+    margin-bottom: 10%; 
 }
 
-/* Style for the search bar input */
+
 .search-bar {
     width: 100%;
     padding: 8px;
@@ -34,10 +34,7 @@
     
 }
 
-/* Base taskcard styling */
-/* General task card styling */
-/* Default taskcard styling */
-/* Default taskcard styling */
+
 .taskcard {
   list-style-type: none;
   margin-bottom: 15px;
@@ -52,11 +49,15 @@
   width: 500px;
   opacity: 1;
   transition: opacity 2s ease-in-out, transform 2s ease-in-out; /* Ensure transition is here */
+  padding: 25px;
+}
+
+.taskcard:hover{
+  transform: scale(1.05);
+  
 }
 
 
-/* Fade-out effect */
-/* Cross out effect when completed */
 .crossed-out {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
@@ -64,14 +65,14 @@
   transition: text-decoration 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Fade out animation when task is checked */
+
 .fade-out {
   opacity: 0;
   transform: scale(0.9);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-/* Fade back in when task is unchecked */
+
 .fade-in {
   opacity: 1;
   transform: scale(1);
@@ -82,55 +83,63 @@
 
 
 
-/* Checkbox style */
+
 .task-checkbox {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 0.5px solid #000000;
+  border: 1px double #000000;
   appearance: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin-left: 15px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.task-checkbox:hover{
-  background-color: #3ebd77; 
+.task-checkbox:hover {
+  background-color: #3ebd77;
+  
 }
 
 .task-checkbox:checked {
-  background-color: #3ebd77; /* Green fill when checked */
-  border: 0.5px solid #020a06; /* Darker green border */
-}
-.task-checkbox:checked:hover{
-  background-color: #f36565; /* Green fill when checked */
-  border: 0.5px solid #000000; /* Darker green border */
+  background-color: #3ebd77;
+  
 }
 
-/* Task details styling */
+.task-checkbox:checked:hover {
+  background-color: #f36565;
+  
+  
+}
+
+.arrows{
+    cursor: pointer;
+    position: absolute;
+    left: 30px;
+    top: 20%;
+    padding: 10px;
+}
+
 .task-details {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: max-height 0.3s ease-in-out, opacity 0.4s ease-in-out;
+  
+  
 }
 
 .task-details.open {
-  max-height: 200px; /* Adjust based on expected content height */
+  max-height: 200px; 
   opacity: 1;
+  padding-top: 10px;
 }
 
-
-
-
-/* Cross out effect when task is completed */
-/* Cross out effect when task is completed */
-/* Fade-out effect when unchecking */
-
-
-
-
-
+.task-details.closed{
+  padding-top: 10px;
+}
 
 .TaskList ul li p{
   width: 80%;
@@ -180,4 +189,15 @@
 
 .switch-label {
   margin-right: 2020px;
+}
+
+.no-results-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #888;
+  margin: 0;
 }

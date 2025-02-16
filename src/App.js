@@ -69,18 +69,6 @@ const handleTaskCompletion = (taskId, completed) => {
   }, 500); // delay animation before updating state
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
   return (
 
     <div className="App">
