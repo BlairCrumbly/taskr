@@ -1,6 +1,8 @@
 import '../styles/TaskList.css';
 import { useState } from 'react';
-import { FaArrowCircleDown,  FaArrowCircleUp} from "react-icons/fa";
+// IoIosArrowDropupCircle
+import { IoIosArrowUp,  IoIosArrowDown} from "react-icons/io";
+
 const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
     const [isOpen, setIsOpen] = useState(false);
     
@@ -24,7 +26,7 @@ const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
           <strong>{task.name}</strong> - {task.dueDate}
         </div>
         <div onClick={toggleDetails}>
-            {isOpen ? <FaArrowCircleUp />: <FaArrowCircleDown/>}
+            {isOpen ? <IoIosArrowUp />: <IoIosArrowDown/>}
         </div>
         
         {isOpen && <div className="task-details"  >
