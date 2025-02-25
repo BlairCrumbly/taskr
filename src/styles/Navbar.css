@@ -11,6 +11,8 @@ nav {
   top: 0;
   left: 0;
   background-color: rgb(28, 137, 79);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
 
 
@@ -133,4 +135,137 @@ nav div {
   display: flex;
   justify-content: center;
   margin-left: -46px;
+}
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  background: rgba(28, 137, 79, 0.9);
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* App container margin for mobile */
+.App {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  /* Hide nav by default on mobile */
+  nav {
+    transform: translateX(-100%);
+    width: 180px;
+  }
+  
+  /* Show the hamburger menu */
+  .menu-toggle {
+    display: block;
+  }
+  
+  /* When nav is open */
+  nav.open {
+    transform: translateX(0);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Adjust the main content */
+  .App {
+    margin-left: 0;
+  }
+  
+  .App.nav-open {
+    margin-left: 180px;
+  }
+  
+  /* Adjust progress circle for mobile */
+  .progress-circle-container {
+    margin-top: -50px;
+    margin-left: -25px;
+    transform: scale(0.8);
+  }
+
+  /* Adjust nav links spacing */
+  .nav-link {
+    margin-bottom: 50px;
+    font-size: 18px;
+  }
+  
+  nav div {
+    margin-top: 100px;
+  }
+  
+  .taskr-heading {
+    font-size: 40px;
+    margin-left: 10px;
+  }
+  
+  .material-symbols-outlined {
+    font-size: 40px;
+  }
+}
+
+/* Add this to src/styles/TaskList.css */
+
+@media screen and (max-width: 768px) {
+  .taskcard {
+    width: 90%;
+    max-width: 350px;
+    padding: 15px;
+    margin: 0 auto 15px auto;
+  }
+  
+  .search-bar {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  .DropDowns select {
+    margin-bottom: 5px;
+    padding: 8px;
+    font-size: 10px;
+  }
+  
+  .DropDowns {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .task-header {
+    font-size: 14px;
+  }
+  
+  .task-details p {
+    width: 95%;
+    font-size: 14px;
+  }
+}
+
+/* Add this for stats page */
+@media screen and (max-width: 768px) {
+  .statistics-container {
+    padding: 10px;
+    margin-left: 5px;
+    width: 100%;
+  }
+  
+  .MuiPaper-root {
+    padding: 10px !important;
+  }
+  
+  .recharts-responsive-container {
+    width: 100% !important;
+  }
 }

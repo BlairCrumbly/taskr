@@ -12,3 +12,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-left: 200px;
+  transition: padding-left 0.3s ease;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 200px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(28, 137, 79, 0.2);
+  border-radius: 50%;
+  border-top-color: rgb(28, 137, 79);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loading-container {
+    margin-left: 0;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding-left: 0;
+  }
+  
+  .App.nav-open {
+    padding-left: 180px;
+  }
+}

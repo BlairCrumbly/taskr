@@ -1,14 +1,15 @@
 import React from 'react';
 import { useOutletContext } from "react-router-dom";
 import TaskCategoryBarChart from './TaskCategoryBarChart';
+import '../styles/Stats.css';
 
 const Statistics = () => {
-  // Get tasks and colorPriority from the context
+  // Get tasks from the context
   const { tasks } = useOutletContext();
 
   return (
     <div className="statistics-container">
-      <TaskCategoryBarChart tasks={tasks}  />
+      <TaskCategoryBarChart tasks={tasks} />
     </div>
   );
 };

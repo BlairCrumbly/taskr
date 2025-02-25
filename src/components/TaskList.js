@@ -3,17 +3,27 @@ import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
 import Switch from '@mui/material/Switch';
-
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 const TaskList = () => {
-
   const [searchQuery, setSearchQuery] = useState("");
   const { tasks, handleTaskCompletion } = useOutletContext(); 
-  const [sortBy, setSortBy] = useState("date")
-  const [showCompleted, setShowCompleted] = useState(false)
-  const [filterInput, setFilterInput] = useState("none")
+  const [sortBy, setSortBy] = useState("date");
+  const [showCompleted, setShowCompleted] = useState(false);
+  const [filterInput, setFilterInput] = useState("none");
   const [taskPriorities, setTaskPriorities] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const colorPriority = (task) => {
     const today = new Date();
@@ -40,7 +50,8 @@ const TaskList = () => {
       return 'green';
     }
   };
- // Recalculate priorities every time tasks change or the date updates
+
+  // Recalculate priorities every time tasks change or the date updates
   useEffect(() => {
     const updatePriorities = () => {
       const newPriorities = {};
@@ -58,138 +69,127 @@ const TaskList = () => {
     return () => clearInterval(interval);
   }, [tasks]);
 
+  const handleSortByChange = (e) => {
+    setSortBy(e.target.value)
+  }
 
-const handleSortByChange = (e) => {
-  
-  setSortBy(e.target.value)
-}
+  const handleSearchChange = (e) => {
+    const query = e.target.value.trim();
+    setSearchQuery(query.length > 0 ? query : "");
+  };
 
-const handleSearchChange = (e) => {
-  const query = e.target.value.trim();
-  setSearchQuery(query.length > 0 ? query : "");
-};
+  const handleTodoChange = () => {
+    setShowCompleted(prevState => !prevState);
+  };
 
-const handleTodoChange = () => {
-  setShowCompleted(prevState => !prevState);
-};
+  const handleColorFilterChange = (e) => {
+    setFilterInput(e.target.value)
+  }
 
-const handleColorFilterChange = (e) => {
-  setFilterInput(e.target.value)
-}
+  // Filters
+  const filteredTasks = tasks.filter((task) => {
+    const taskName = task.name.toLowerCase();
+    const normalizedSearchQuery = searchQuery.toLowerCase();
 
- //! filters
+    // Check if the task matches the search query
+    const matchesSearch = taskName.includes(normalizedSearchQuery);
+    
+    // If there's no search query or the task matches, keep it
+    return (searchQuery === "" || matchesSearch) && 
+           (filterInput === "none" || colorPriority(task) === filterInput);
+  });
 
-const filteredTasks = tasks.filter((task) => {
-  const taskName = task.name.toLowerCase();
-  const normalizedSearchQuery = searchQuery.toLowerCase();
+  // Sorting tasks based on the search query and other criteria
+  const sortedTasks = useMemo(() => {
+    return [...filteredTasks]
+      .sort((a, b) => {
+        const normalizedSearchQuery = searchQuery.toLowerCase();
 
-  //! check if the task matches the search query
-  const matchesSearch = taskName.includes(normalizedSearchQuery);
-  
-  //! if there's no search query or the task matches, keep it
-  return (searchQuery === "" || matchesSearch) && 
-         (filterInput === "none" || colorPriority(task) === filterInput);
-});
+        // If there's a search query, prioritize tasks whose name starts with the query
+        if (searchQuery) {
+          const startsWithA = a.name.toLowerCase().startsWith(normalizedSearchQuery);
+          const startsWithB = b.name.toLowerCase().startsWith(normalizedSearchQuery);
 
-//! sorting tasks based on the search query and other criteria
-const sortedTasks = useMemo(() => {
-  return [...filteredTasks]
-    .sort((a, b) => {
-      const normalizedSearchQuery = searchQuery.toLowerCase();
+          // Prioritize tasks where the name starts with the search query
+          if (startsWithA && !startsWithB) return -1;
+          if (!startsWithA && startsWithB) return 1;
+        }
 
-      //! if there's a search query, prioritize tasks whose name starts with the query
-      if (searchQuery) {
-        const startsWithA = a.name.toLowerCase().startsWith(normalizedSearchQuery);
-        const startsWithB = b.name.toLowerCase().startsWith(normalizedSearchQuery);
+        // If no search query, fallback to other sorting 
+        if (sortBy === "date") {
+          const dateComparison = new Date(a.dueDate) - new Date(b.dueDate);
+          if (dateComparison !== 0) return dateComparison;
 
-        //! prioritize tasks where the name starts with the search query
-        if (startsWithA && !startsWithB) return -1;
-        if (!startsWithA && startsWithB) return 1;
-      }
+          const estimatedTimeA = parseInt(a.estimatedTime) || 0;
+          const estimatedTimeB = parseInt(b.estimatedTime) || 0;
+          return estimatedTimeB - estimatedTimeA;
+        } else if (sortBy === "Z-A") {
+          return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
+        } else {
+          return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        }
+      })
+      .filter((task) => (showCompleted ? task.completed : !task.completed));
+  }, [filteredTasks, searchQuery, sortBy, showCompleted]);
 
-      //! if no search query, fallback to other sorting 
-      if (sortBy === "date") {
-        const dateComparison = new Date(a.dueDate) - new Date(b.dueDate);
-        if (dateComparison !== 0) return dateComparison;
+  return (
+    <div className="centered-container">
+      <div className="TaskList">
+        {/* Conditionally render filters based on the presence of the search query */}
+        {!searchQuery && (
+          <div className={`DropDowns ${isMobile ? 'mobile-dropdowns' : ''}`}>
+            <select onChange={handleSortByChange}>
+              <option value="date">Sort by Date</option>
+              <option value="A-Z">Sort by A-Z</option>
+              <option value="Z-A">Sort by Z-A</option>
+            </select>
 
-        const estimatedTimeA = parseInt(a.estimatedTime) || 0;
-        const estimatedTimeB = parseInt(b.estimatedTime) || 0;
-        return estimatedTimeB - estimatedTimeA;
-      } else if (sortBy === "Z-A") {
-        return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
-      } else {
-        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-      }
-    })
-    .filter((task) => (showCompleted ? task.completed : !task.completed));
-}, [filteredTasks, searchQuery, sortBy, showCompleted]);
+            <select onChange={handleColorFilterChange}>
+              <option value="none">None</option>
+              <option value="overdue">Overdue</option>
+              <option value="red">Red</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+            </select>
 
+            <FormControlLabel
+              control={<Switch color="secondary" checked={showCompleted} onChange={handleTodoChange} />}
+              label="Show completed tasks"
+              labelPlacement="end"
+              className="switch-label"
+            />
+          </div>
+        )}
 
-
-
-
-
-
-return (
-  <div className="centered-container">
-    <div className="TaskList">
-      {/* Conditionally render filters based on the presence of the search query */}
-      {!searchQuery && (
-        <div className="DropDowns">
-          <select onChange={handleSortByChange}>
-            <option value="date">Sort by Date</option>
-            <option value="A-Z">Sort by A-Z</option>
-            <option value="Z-A">Sort by Z-A</option>
-          </select>
-
-          <select onChange={handleColorFilterChange}>
-            <option value="none">None</option>
-            <option value="overdue">Overdue</option>
-            <option value="red">Red</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-          </select>
-
-          <FormControlLabel
-            control={<Switch color="secondary" checked={showCompleted} onChange={handleTodoChange} />}
-            label="Show completed tasks"
-            labelPlacement="end"
-            className="switch-label"
+        {/* Search Bar */}
+        <div className="search-bar-container">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search tasks..."
+            value={searchQuery}
+            onChange={handleSearchChange}
           />
         </div>
-      )}
 
-      {/* Search Bar */}
-      <div className="search-bar-container">
-        <input
-          type="text"
-          className="search-bar"
-          placeholder="Search tasks..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
+        {/* Tasks */}
+        {sortedTasks.length > 0 ? (
+          <ul>
+            {sortedTasks.map((task) => (
+              <TaskCard
+                key={task.id}
+                task={task}
+                handleTaskCompletion={handleTaskCompletion}
+                priorityClass={taskPriorities[task.id]}
+              />
+            ))}
+          </ul>
+        ) : (
+          <p className="no-results-message">Sorry, didn't find anything. ):</p>
+        )}
       </div>
-
-      {/* Tasks */}
-      {sortedTasks.length > 0 ? (
-        <ul>
-          {sortedTasks.map((task) => (
-            <TaskCard
-              key={task.id}
-              task={task}
-              handleTaskCompletion={handleTaskCompletion}
-              priorityClass={taskPriorities[task.id]}
-              
-              
-            />
-          ))}
-        </ul>
-      ) : (
-        <p className="no-results-message">Sorry, didn't find anything. ):</p> // display message when no tasks are found
-      )}
     </div>
-  </div>
-);
+  );
 };
 
 export default TaskList;

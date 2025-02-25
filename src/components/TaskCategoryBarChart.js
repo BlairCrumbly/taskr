@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Paper, Typography } from '@mui/material';
-
-
+import '../styles/TaskCategoryBarChart.css';
 
 // TaskCategoryBarChart Component
 const TaskCategoryBarChart = ({ tasks }) => {
+  const [chartHeight, setChartHeight] = useState(300);
+  const [containerWidth, setContainerWidth] = useState('70%');
+  const [typographySize, setTypographySize] = useState('h4');
+  
+  // Handle responsive sizing
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setChartHeight(250);
+        setContainerWidth('100%');
+        setTypographySize('h5');
+      } else {
+        setChartHeight(300);
+        setContainerWidth('70%');
+        setTypographySize('h4');
+      }
+    };
+    
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const colorPriority = (task) => {
     const today = new Date();
@@ -26,6 +47,7 @@ const TaskCategoryBarChart = ({ tasks }) => {
       return 'green';
     }
   };
+  
   const categories = {
     green: 0,
     red: 0,
@@ -56,12 +78,11 @@ const TaskCategoryBarChart = ({ tasks }) => {
   ];
 
   return (
-    
-    <Paper elevation={3} style={{ padding: '20px', marginBottom: '20px' }}>
-      <Typography variant="h4" align="center"gutterBottom>
+    <Paper elevation={3} style={{ padding: '20px', marginBottom: '20px' }} className="chart-paper">
+      <Typography variant={typographySize} align="center" gutterBottom className="chart-title">
         Task Category Overview
       </Typography>
-      <ResponsiveContainer width="70%" height={300} style={{ marginLeft: '15%' }}>
+      <ResponsiveContainer width={containerWidth} height={chartHeight} style={{ marginLeft: window.innerWidth <= 768 ? '0' : '15%' }} className="chart-container">
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="category" />

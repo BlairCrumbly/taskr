@@ -17,28 +17,12 @@
       "completed": false
     },
     {
-      "id": "7149",
-      "name": "Modal feature for project",
-      "description": "Adding modal for the task that holds due date, details, and estimated time.",
-      "dueDate": "2025-02-14",
-      "estimatedTime": "1",
-      "completed": false
-    },
-    {
-      "id": "5ad1",
-      "name": "Routing submit feature",
-      "description": "Add routing back to home after submit of the add task form",
-      "dueDate": "2025-02-11",
-      "estimatedTime": "0",
-      "completed": false
-    },
-    {
       "id": "b910",
       "name": "Filler Task",
       "description": "meow meow meow meow meow meow meow meow meow meow",
       "dueDate": "2025-02-12",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "94d3",
@@ -54,7 +38,7 @@
       "description": "yeller",
       "dueDate": "2025-02-26",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "f2ba",
@@ -86,15 +70,7 @@
       "description": "new task",
       "dueDate": "2025-03-07",
       "estimatedTime": "1",
-      "completed": false
-    },
-    {
-      "id": "1661",
-      "name": "Present",
-      "description": "talk about stuff",
-      "dueDate": "2025-02-14",
-      "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "f500",
@@ -110,7 +86,7 @@
       "description": "should be overdue",
       "dueDate": "2025-02-11",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "bed8",
@@ -134,7 +110,7 @@
       "description": "e",
       "dueDate": "2025-03-04",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     }
   ]
 }

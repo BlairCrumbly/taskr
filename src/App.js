@@ -72,7 +72,7 @@ const handleTaskCompletion = (taskId, completed) => {
   return (
 
     <div className="App">
-      <header>Taskr</header>
+      
       <Navbar totalTasks={totalTasks} completedTasks={completedTasks} />
       <Outlet
         context={{ handleNewTask, handleTaskCompletion, tasks, totalTasks, completedTasks }}
