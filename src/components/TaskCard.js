@@ -1,7 +1,9 @@
 import '../styles/TaskList.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { IoIosArrowUp,  IoIosArrowDown} from "react-icons/io";
+
+
 
 const TaskCard = ({task, handleTaskCompletion, priorityClass}) => {
     const [isOpen, setIsOpen] = useState(false);

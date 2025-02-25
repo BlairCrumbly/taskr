@@ -6,7 +6,7 @@
       "dueDate": "2025-02-20",
       "description": "Finish the front-end for the task management app.",
       "estimatedTime": "3 hours",
-      "completed": true
+      "completed": false
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "dueDate": "2025-02-17",
       "description": "Practice LeetCode problems on arrays and linked lists.",
       "estimatedTime": "2 hours",
-      "completed": true
+      "completed": false
     },
     {
       "id": "7149",
@@ -22,7 +22,7 @@
       "description": "Adding modal for the task that holds due date, details, and estimated time.",
       "dueDate": "2025-02-14",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "5ad1",
@@ -36,7 +36,7 @@
       "id": "b910",
       "name": "Filler Task",
       "description": "meow meow meow meow meow meow meow meow meow meow",
-      "dueDate": "2025-02-11",
+      "dueDate": "2025-02-12",
       "estimatedTime": "1",
       "completed": false
     },
@@ -46,7 +46,7 @@
       "description": "e",
       "dueDate": "2025-04-23",
       "estimatedTime": "1",
-      "completed": false
+      "completed": true
     },
     {
       "id": "30d7",
@@ -70,7 +70,7 @@
       "description": "3",
       "dueDate": "2025-02-28",
       "estimatedTime": "2",
-      "completed": true
+      "completed": false
     },
     {
       "id": "cbfd",
@@ -86,7 +86,7 @@
       "description": "new task",
       "dueDate": "2025-03-07",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "1661",
@@ -94,13 +94,45 @@
       "description": "talk about stuff",
       "dueDate": "2025-02-14",
       "estimatedTime": "1",
-      "completed": true
+      "completed": false
     },
     {
       "id": "f500",
       "name": "ef",
       "description": "e",
       "dueDate": "2025-03-14",
+      "estimatedTime": "1",
+      "completed": true
+    },
+    {
+      "id": "7c32",
+      "name": "test red",
+      "description": "should be overdue",
+      "dueDate": "2025-02-11",
+      "estimatedTime": "1",
+      "completed": false
+    },
+    {
+      "id": "bed8",
+      "name": "should be yellow",
+      "description": "14 days out",
+      "dueDate": "2025-03-11",
+      "estimatedTime": "1",
+      "completed": false
+    },
+    {
+      "id": "298e",
+      "name": "should be green",
+      "description": "should be green",
+      "dueDate": "2025-07-30",
+      "estimatedTime": "1",
+      "completed": false
+    },
+    {
+      "id": "a520",
+      "name": "should be red",
+      "description": "e",
+      "dueDate": "2025-03-04",
       "estimatedTime": "1",
       "completed": false
     }

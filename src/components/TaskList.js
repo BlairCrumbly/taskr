@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import '../styles/TaskList.css';
 import { useOutletContext } from "react-router-dom";
 import TaskCard from "./TaskCard";
@@ -13,27 +13,50 @@ const TaskList = () => {
   const [sortBy, setSortBy] = useState("date")
   const [showCompleted, setShowCompleted] = useState(false)
   const [filterInput, setFilterInput] = useState("none")
+  const [taskPriorities, setTaskPriorities] = useState({});
 
-
-    const colorPriority = (task) =>{
+  const colorPriority = (task) => {
     const today = new Date();
-    const dueDate = new Date(task.dueDate)
+    today.setHours(0, 0, 0, 0); // Reset hours to compare just the dates
+    
+    const dueDate = new Date(task.dueDate);
+    dueDate.setHours(0, 0, 0, 0);
+    
     const redZone = 7;
     const yellowZone = 14;
-
-    if(dueDate < today && dueDate.getDay() !== today.getDay()){
-        return 'overdue'
+  
+    // Check if date is in the past (not just different day)
+    if (dueDate < today) {
+      return 'overdue';
     }
+    
     const differenceInDays = Math.floor((dueDate - today) / (1000 * 60 * 60 * 24));
     
-    if(differenceInDays < redZone){
-        return 'red'
-    }else if (differenceInDays < yellowZone  && differenceInDays >= redZone){
-        return 'yellow'
-    } else{
-        return 'green'
-    } 
-}
+    if (differenceInDays < redZone) {
+      return 'red';
+    } else if (differenceInDays < yellowZone) {
+      return 'yellow';
+    } else {
+      return 'green';
+    }
+  };
+ // Recalculate priorities every time tasks change or the date updates
+  useEffect(() => {
+    const updatePriorities = () => {
+      const newPriorities = {};
+      tasks.forEach((task) => {
+        newPriorities[task.id] = colorPriority(task);
+      });
+      setTaskPriorities(newPriorities);
+    };
+
+    updatePriorities();
+
+    // Recalculate priorities every 24 hours
+    const interval = setInterval(updatePriorities, 24 * 60 * 60 * 1000);
+
+    return () => clearInterval(interval);
+  }, [tasks]);
 
 
 const handleSortByChange = (e) => {
@@ -155,12 +178,14 @@ return (
               key={task.id}
               task={task}
               handleTaskCompletion={handleTaskCompletion}
-              priorityClass={colorPriority(task)}
+              priorityClass={taskPriorities[task.id]}
+              
+              
             />
           ))}
         </ul>
       ) : (
-        <p className="no-results-message">Sorry, didn't find anything. ):</p> // Display message when no tasks are found
+        <p className="no-results-message">Sorry, didn't find anything. ):</p> // display message when no tasks are found
       )}
     </div>
   </div>
