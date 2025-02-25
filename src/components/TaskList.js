@@ -74,8 +74,8 @@ const TaskList = () => {
   }
 
   const handleSearchChange = (e) => {
-    const query = e.target.value.trim();
-    setSearchQuery(query.length > 0 ? query : "");
+    const query = e.target.value;
+    setSearchQuery(query);
   };
 
   const handleTodoChange = () => {
